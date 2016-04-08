@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Gibson Regular';
+    src: url(../fonts/gibsonregular.ttf);
+}
+
 html, body {
     margin: 0;
 }
@@ -14,16 +19,31 @@ html, body {
 }
 
 #betteru-logo {
+    margin: 10px 10px 0 0;
     height: 50px;
     float: left;
 }
 
 #betteru-name {
     height: 25px;
+    margin-top: 22px;
     float: left;
     margin-left: 10px;
 }
 
 #header-navigation {
     float: right;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-family: "Gibson Regular";
+    font-size: 14px;
+}
+
+#header-navigation a {
+    color: #666666;
+    text-decoration: none;
+}
+
+#header-navigation a:hover {
+    text-decoration: underline;
 }
