@@ -14,7 +14,9 @@ html, body {
 
 #header-wrapper {
     width: 100%;
-    height: 70px;
+    height: 67px;
+    background-color: #f6f6f6;
+    border-bottom: 3px #cccccc solid;
 }
 
 #header-inner-wrapper {
