@@ -1,27 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!--
 Created by Jared Schwalbe on 2016.04.05 
 Copyright © 2016 Osman Balci. All rights reserved.
 -->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <title>Sign In</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="resources/css/global.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/signIn.css" />
     </head>
     <body>
-        Sign In page.
-        <h:form class="form-signin">
-            <h:outputLabel styleClass="outputLabel" for="loginname" value="Username: " />
-            <h:inputText class="form-control" id="loginname" value="#{loginManager.username}"/>
-
-            <h:outputLabel styleClass="outputLabel" for="password" value="Password: " />
-            <h:inputSecret class="form-control"  id="password" value="#{loginManager.password}"/>
-            
-            <h:commandButton id="login"  action="#{loginManager.loginUser()}" value="Login" styleClass="buttonText"/>
-            
-            <h:outputLabel value ="#{loginManager.errorMessage}" />
-        </h:form>
+        <!-- HEADER -->
+        <div id="header-wrapper">
+            <div id="header-inner-wrapper">
+                <img id="betteru-logo" src="resources/images/betteru_logo_circle.png" alt="BetterU Logo" />
+                <img id="betteru-name" src="resources/images/betteru_name.png" alt="BetterU Name" />
+                <div id="header-navigation">
+                    <a href="SignIn.xhtml">Sign in</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="CreateAccount.xhtml">Create Account</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE CONTENT -->
+        <div id="content-container">
+            <div id="signin-wrapper">
+                <h:form class="form-signin">
+                    <!-- Input fields -->
+                    <h:inputText id="username" class="input-control" value="#{loginManager.username}" 
+                                 a:placeholder="Username"/>
+                    <h:inputText id="password" class="input-control" value="#{loginManager.password}" 
+                                 a:placeholder="Password"/>
+                    <!-- Error messages output -->
+                    <h:outputLabel id="form-error-message" styleClass="error-message" 
+                                   value="#{loginManager.errorMessage}"/>
+                    <!-- Sign in button -->
+                    <h:commandButton id="signin-btn" styleClass="form-btn" value="Sign in" 
+                                     action="#{loginManager.loginUser()}"/>
+                    <!-- Forgot password / create account links -->
+                    <div id="login-links">
+                        <h:commandLink action="#{loginManager.createUser()}">
+                            Create account
+                        </h:commandLink><br/>
+                        <h:commandLink action="#{loginManager.resetPassword()}">
+                            Forgot your password?
+                        </h:commandLink>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div id="footer-wrapper">
+            <div id="footer-inner-wrapper">
+                
+            </div>
+        </div>
     </body>
 </html>
