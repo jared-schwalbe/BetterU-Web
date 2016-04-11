@@ -373,7 +373,7 @@ public class AccountManager implements Serializable {
                 user.setEmail(email);
                 user.setPoints(0);
                 user.setActivityLevel(activityLevel);
-                //
+                // calculate bmr
                 user.setBmr(0);
                 user.setGoalType(goalType);
                 user.setGoalWeight(goalWeight);
