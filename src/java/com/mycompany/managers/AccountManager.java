@@ -5,6 +5,7 @@
 package com.mycompany.managers;
 
 import com.mycompany.entitypackage.User;
+import com.mycompany.sessionbeanpackage.PhotoFacade;
 import com.mycompany.sessionbeanpackage.UserFacade;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -72,8 +73,8 @@ public class AccountManager implements Serializable {
      * This means that the GlassFish application server, at runtime, will inject in
      * this instance variable a reference to the @Stateless session bean PhotoFacade.
      */
-//    @EJB
-//    private PhotoFacade photoFacade;
+    @EJB
+    private PhotoFacade photoFacade;
 
     public String[] getListOfStates() {
         return listOfStates;
