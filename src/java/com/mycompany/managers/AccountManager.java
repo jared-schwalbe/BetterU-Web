@@ -1,12 +1,10 @@
 /*
- * Created by Jared Schwalbe on 2016.04.08  * 
- * Copyright © 2016 Osman Balci. All rights reserved. * 
+ * Created by Ojas Mhetar on 2016.02.27  * 
+ * Copyright © 2016 Ojas Mhetar. All rights reserved. * 
  */
 package com.mycompany.managers;
 
-import com.mycompany.entitypackage.Photo;
 import com.mycompany.entitypackage.User;
-import com.mycompany.sessionbeanpackage.PhotoFacade;
 import com.mycompany.sessionbeanpackage.UserFacade;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -20,12 +18,15 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Named;
-
+ 
+@Named(value = "accountManager")
+@SessionScoped
 /**
  *
- * @author Jared
+ * @author Mhetar
  */
 public class AccountManager implements Serializable {
+ 
     // Instance Variables (Properties)
     private String firstName;
     private String middleName;
@@ -44,12 +45,12 @@ public class AccountManager implements Serializable {
     private int security_question;
     private String security_answer;
         
-    //private final String[] listOfStates = Constants.STATES;
+    private final String[] listOfStates = Constants.STATES;
     private Map<String, Object> security_questions;
     
     private User selected;
     
-     /**
+    /**
      * The instance variable 'userFacade' is annotated with the @EJB annotation.
      * This means that the GlassFish application server, at runtime, will inject in
      * this instance variable a reference to the @Stateless session bean UserFacade.
@@ -62,12 +63,12 @@ public class AccountManager implements Serializable {
      * This means that the GlassFish application server, at runtime, will inject in
      * this instance variable a reference to the @Stateless session bean PhotoFacade.
      */
-    @EJB
-    private PhotoFacade photoFacade;
+//    @EJB
+//    private PhotoFacade photoFacade;
 
-    /*public String[] getListOfStates() {
+    public String[] getListOfStates() {
         return listOfStates;
-    }*/
+    }
 
     public int getHeight() {
         return height;
@@ -228,9 +229,9 @@ public class AccountManager implements Serializable {
     public Map<String, Object> getSecurity_questions() {
         if (security_questions == null) {
             security_questions = new LinkedHashMap<>();
-            /*for (int i = 0; i < Constants.QUESTIONS.length; i++) {
+            for (int i = 0; i < Constants.QUESTIONS.length; i++) {
                 security_questions.put(Constants.QUESTIONS[i], i);
-            }*/
+            }
         }
         return security_questions;
     }
@@ -261,7 +262,7 @@ public class AccountManager implements Serializable {
         this.selected = selected;
     }
 
-    /*public String createAccount() {
+    public String createAccount() {
         
         // Check to see if a user already exists with the username given.
         User aUser = userFacade.findByUsername(username);
@@ -276,20 +277,23 @@ public class AccountManager implements Serializable {
             try {
                 User user = new User();
                 user.setFirstName(firstName);
-                user.setMiddleName(middleName);
                 user.setLastName(lastName);                
                 user.setHeight(height);
                 user.setWeight(weight);
-                user.setAddress1(address1);
-                user.setAddress2(address2);
-                user.setCity(city);
-                user.setState(state);
-                user.setZipcode(zipcode);
+                user.setAge(20);
                 user.setSecurityQuestion(security_question);
                 user.setSecurityAnswer(security_answer);
                 user.setEmail(email);
                 user.setUsername(username);                
                 user.setPassword(password);
+                user.setBmr(height);
+                user.setActivityLevel(1);
+                user.setActivityGoal("Lose weight");
+                user.setGender('F');
+                user.setPoints(0);
+                user.setUnits('I');
+              
+             
                 userFacade.create(user);                
             } catch (EJBException e) {
                 username = "";
@@ -300,9 +304,9 @@ public class AccountManager implements Serializable {
             return "Profile";
         }
         return "";
-    }*/
+    }
 
-    /*public String updateAccount() {
+    public String updateAccount() {
         if (statusMessage.isEmpty()) {
             int user_id = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user_id");
                 User editUser = userFacade.getUser(user_id);
@@ -310,8 +314,7 @@ public class AccountManager implements Serializable {
                 editUser.setFirstName(this.selected.getFirstName());
                 editUser.setLastName(this.selected.getLastName());
                 editUser.setHeight(this.selected.getHeight());
-                editUser.setWeight(this.selected.getWeight());
-                       
+                editUser.setWeight(this.selected.getWeight());              
                 editUser.setEmail(this.selected.getEmail());
                 editUser.setPassword(this.selected.getPassword());
                 userFacade.edit(editUser);
@@ -323,9 +326,9 @@ public class AccountManager implements Serializable {
             return "Profile";
         }
         return "";
-    }*/
+    }
     
-    /*public String deleteAccount() {
+    public String deleteAccount() {
         if (statusMessage.isEmpty()) {
             int user_id = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user_id");
             try {
@@ -340,7 +343,7 @@ public class AccountManager implements Serializable {
             return "/index.xhtml?faces-redirect=true";
         }
         return "";
-    }*/
+    }
     
     public void validateInformation(ComponentSystemEvent event) {
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -369,13 +372,13 @@ public class AccountManager implements Serializable {
         }   
     }
 
-    /*public void initializeSessionMap() {
+    public void initializeSessionMap() {
         User user = userFacade.findByUsername(getUsername());
         FacesContext.getCurrentInstance().getExternalContext().
                 getSessionMap().put("username", username);
         FacesContext.getCurrentInstance().getExternalContext().
                 getSessionMap().put("user_id", user.getId());
-    }*/
+    }
 
     private boolean correctPasswordEntered(UIComponent components) {
         UIInput uiInputVerifyPassword = (UIInput) components.findComponent("verifyPassword");
@@ -404,15 +407,6 @@ public class AccountManager implements Serializable {
         return "/index.xhtml?faces-redirect=true";
     }
    
-    /*public String userPhoto() {
-        String user_name = (String) FacesContext.getCurrentInstance()
-                .getExternalContext().getSessionMap().get("username");
-        User user = userFacade.findByUsername(user_name);
-        List<Photo> photoList = photoFacade.findPhotosByUserID(user.getId());
-        if (photoList.isEmpty()) {
-            return "defaultUserPhoto.png";
-        }
-        return photoList.get(0).getThumbnailName();
-    }*/
+
 
 }
