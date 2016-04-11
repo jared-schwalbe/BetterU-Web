@@ -369,18 +369,19 @@ public class AccountManager implements Serializable {
                 user.setGender(gender);
                 user.setHeight(height);
                 user.setWeight(weight);
-                user.setUnits(units);
+                user.setUnits('I');
                 user.setEmail(email);
-                user.setPoints(points);
+                user.setPoints(0);
                 user.setActivityLevel(activityLevel);
-                user.setBmr(bmr);
+                //
+                user.setBmr(0);
                 user.setGoalType(goalType);
                 user.setGoalWeight(goalWeight);
                 user.setActivityGoal(activityGoal);
-                user.setDailyChallengeIndex(dailyChallengeIndex);
-                user.setDCSkipped(dCSkipped);
-                user.setWeeklyChallengeIndex(weeklyChallengeIndex);
-                user.setWCSkipped(wCSkipped);
+                user.setDailyChallengeIndex(0);
+                user.setDCSkipped("");
+                user.setWeeklyChallengeIndex(0);
+                user.setWCSkipped(0);
                 user.setSecurityQuestion(security_question);
                 user.setSecurityAnswer(security_answer);
                 user.setEmail(email);
