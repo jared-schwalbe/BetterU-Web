@@ -349,37 +349,17 @@ public class AccountManager implements Serializable {
     public String createAccount() {
         
         // Check to see if a user already exists with the username given.
-        /*User aUser = userFacade.findByUsername(username);
+        User aUser = userFacade.findByUsername(username);
         
         if (aUser != null) {
             username = "";
             statusMessage = "Username already exists! Please select a different one!";
             return "";
-        }*/
+        }
 
         if (statusMessage.isEmpty()) {
             try {
                 User user = new User();
-                
-                /*
-                
-                
-                private String units;
-                private String email;
-                private int points;
-                private int activityLevel;
-                private int bmr;
-                private int goalType;
-                private int goalWeight;
-                private String activityGoal;
-                private int dailyChallengeIndex;
-                private int dCSkipped;
-                private int weeklyChallengeIndex;
-                private int wCSkipped;
-                private int security_question;
-                private int targetCalories;
-                private String security_answer;
-                */
                 
                 user.setFirstName(firstName);
                 user.setLastName(lastName);                
@@ -411,7 +391,7 @@ public class AccountManager implements Serializable {
                 return "";
             }
             //initializeSessionMap();
-            return "Profile";
+            return "index";
         }
         return "";
     }
