@@ -87,7 +87,10 @@ Copyright © 2016 Osman Balci. All rights reserved.
                 <p>Target Calories:</p>
                 <h:inputText id="targetCalories" value="#{accountManager.targetCalories}"/>
                 
+                <br/><br/>
                 
+                <h:commandButton class="btn btn-lg btn-success btn-block" id="submit" 
+                           action="#{accountManager.createAccount()}" value="Submit" />   
             
             </h:form>
 

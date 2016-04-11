@@ -28,21 +28,30 @@ import javax.inject.Named;
 public class AccountManager implements Serializable {
     // Instance Variables (Properties)
     private String firstName;
-    private String middleName;
     private String lastName;
     private String username;
     private String password;
-    private String email;
-    private String statusMessage;
+    private int age;
+    private char gender;
     private int height;
     private int weight;
-    private String address1;
-    private String address2;
-    private String city;
-    private String state;
-    private int zipcode;
+    private char units;
+    private String email;
+    private int points;
+    private int activityLevel;
+    private int bmr;
+    private int goalType;
+    private int goalWeight;
+    private String activityGoal;
+    private int dailyChallangeIndex;
+    private String dCSkipped;
+    private int weeklyChallengIndex;
+    private int wCSkipped;
     private int security_question;
     private String security_answer;
+    private int targetCalories;
+    
+    private String statusMessage;
         
     //private final String[] listOfStates = Constants.STATES;
     private Map<String, Object> security_questions;
@@ -105,14 +114,6 @@ public class AccountManager implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
     /**
      * @return the last name
      */
@@ -169,46 +170,6 @@ public class AccountManager implements Serializable {
         this.email = email;
     }
 
-    public String getAddress1() {
-        return address1;
-    }
-
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
-    }
-    
     public int getSecurity_question() {
         return security_question;
     }
@@ -224,6 +185,142 @@ public class AccountManager implements Serializable {
     public void setSecurity_answer(String security_answer) {
         this.security_answer = security_answer;
     }
+    
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public char getUnits() {
+        return units;
+    }
+
+    public void setUnits(char units) {
+        this.units = units;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(int activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+
+    public int getBmr() {
+        return bmr;
+    }
+
+    public void setBmr(int bmr) {
+        this.bmr = bmr;
+    }
+
+    public int getGoalType() {
+        return goalType;
+    }
+
+    public void setGoalType(int goalType) {
+        this.goalType = goalType;
+    }
+
+    public int getGoalWeight() {
+        return goalWeight;
+    }
+
+    public void setGoalWeight(int goalWeight) {
+        this.goalWeight = goalWeight;
+    }
+
+    public String getActivityGoal() {
+        return activityGoal;
+    }
+
+    public void setActivityGoal(String activityGoal) {
+        this.activityGoal = activityGoal;
+    }
+
+    public int getDailyChallangeIndex() {
+        return dailyChallangeIndex;
+    }
+
+    public void setDailyChallangeIndex(int dailyChallangeIndex) {
+        this.dailyChallangeIndex = dailyChallangeIndex;
+    }
+
+    public String getdCSkipped() {
+        return dCSkipped;
+    }
+
+    public void setdCSkipped(String dCSkipped) {
+        this.dCSkipped = dCSkipped;
+    }
+
+    public int getWeeklyChallengIndex() {
+        return weeklyChallengIndex;
+    }
+
+    public void setWeeklyChallengIndex(int weeklyChallengIndex) {
+        this.weeklyChallengIndex = weeklyChallengIndex;
+    }
+
+    public int getwCSkipped() {
+        return wCSkipped;
+    }
+
+    public void setwCSkipped(int wCSkipped) {
+        this.wCSkipped = wCSkipped;
+    }
+
+    public int getTargetCalories() {
+        return targetCalories;
+    }
+
+    public void setTargetCalories(int targetCalories) {
+        this.targetCalories = targetCalories;
+    }
+
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
+    }
+
+    public UserFacade getUserFacade() {
+        return userFacade;
+    }
+
+    public void setUserFacade(UserFacade userFacade) {
+        this.userFacade = userFacade;
+    }
+
+    public PhotoFacade getPhotoFacade() {
+        return photoFacade;
+    }
+
+    public void setPhotoFacade(PhotoFacade photoFacade) {
+        this.photoFacade = photoFacade;
+    }
 
     public Map<String, Object> getSecurity_questions() {
         if (security_questions == null) {
@@ -235,20 +332,6 @@ public class AccountManager implements Serializable {
         return security_questions;
     }
     
-    /**
-     * @return the statusMessage
-     */
-    public String getStatusMessage() {
-        return statusMessage;
-    }
-
-    /**
-     * @param statusMessage the statusMessage to set
-     */
-    public void setStatusMessage(String statusMessage) {
-        this.statusMessage = statusMessage;
-    }
-
     public User getSelected() {
         if (selected == null) {
             selected = userFacade.find(FacesContext.getCurrentInstance().
@@ -261,46 +344,75 @@ public class AccountManager implements Serializable {
         this.selected = selected;
     }
 
-    /*public String createAccount() {
+    public String createAccount() {
         
         // Check to see if a user already exists with the username given.
-        User aUser = userFacade.findByUsername(username);
+        /*User aUser = userFacade.findByUsername(username);
         
         if (aUser != null) {
             username = "";
             statusMessage = "Username already exists! Please select a different one!";
             return "";
-        }
+        }*/
 
         if (statusMessage.isEmpty()) {
             try {
                 User user = new User();
+                
+                /*
+                
+                
+                private String units;
+                private String email;
+                private int points;
+                private int activityLevel;
+                private int bmr;
+                private int goalType;
+                private int goalWeight;
+                private String activityGoal;
+                private int dailyChallangeIndex;
+                private int dCSkipped;
+                private int weeklyChallengIndex;
+                private int wCSkipped;
+                private int security_question;
+                private int targetCalories;
+                private String security_answer;
+                */
+                
                 user.setFirstName(firstName);
-                user.setMiddleName(middleName);
                 user.setLastName(lastName);                
+                user.setUsername(username);                
+                user.setPassword(password);
+                user.setAge(age);
+                user.setGender(gender);
                 user.setHeight(height);
                 user.setWeight(weight);
-                user.setAddress1(address1);
-                user.setAddress2(address2);
-                user.setCity(city);
-                user.setState(state);
-                user.setZipcode(zipcode);
+                user.setUnits(units);
+                user.setEmail(email);
+                user.setPoints(points);
+                user.setActivityLevel(activityLevel);
+                user.setBmr(bmr);
+                user.setGoalType(goalType);
+                user.setGoalWeight(goalWeight);
+                user.setActivityGoal(activityGoal);
+                user.setDailyChallengeIndex(dailyChallangeIndex);
+                user.setDCSkipped(dCSkipped);
+                user.setWeeklyChallengeIndex(weeklyChallengIndex);
+                user.setWCSkipped(wCSkipped);
                 user.setSecurityQuestion(security_question);
                 user.setSecurityAnswer(security_answer);
                 user.setEmail(email);
-                user.setUsername(username);                
-                user.setPassword(password);
                 userFacade.create(user);                
             } catch (EJBException e) {
                 username = "";
                 statusMessage = "Something went wrong while creating your account!";
                 return "";
             }
-            initializeSessionMap();
+            //initializeSessionMap();
             return "Profile";
         }
         return "";
-    }*/
+    }
 
     /*public String updateAccount() {
         if (statusMessage.isEmpty()) {
@@ -396,8 +508,8 @@ public class AccountManager implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
-        username = firstName = middleName = lastName = password = email = statusMessage = "";
-        address1 = address2 = city = state = security_answer = "";
+        username = firstName = lastName = password = email = statusMessage = "";
+        security_answer = "";
         height = weight = security_question = 0;
         
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
