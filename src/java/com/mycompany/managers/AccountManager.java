@@ -21,6 +21,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Named;
 
+@Named(value = "accountManager")
+@SessionScoped
 /**
  *
  * @author Jared
@@ -43,15 +45,15 @@ public class AccountManager implements Serializable {
     private int goalType;
     private int goalWeight;
     private String activityGoal;
-    private int dailyChallangeIndex;
+    private int dailyChallengeIndex;
     private String dCSkipped;
-    private int weeklyChallengIndex;
+    private int weeklyChallengeIndex;
     private int wCSkipped;
     private int security_question;
     private String security_answer;
     private int targetCalories;
     
-    private String statusMessage;
+    private String statusMessage = "";
         
     //private final String[] listOfStates = Constants.STATES;
     private Map<String, Object> security_questions;
@@ -258,12 +260,12 @@ public class AccountManager implements Serializable {
         this.activityGoal = activityGoal;
     }
 
-    public int getDailyChallangeIndex() {
-        return dailyChallangeIndex;
+    public int getDailyChallengeIndex() {
+        return dailyChallengeIndex;
     }
 
-    public void setDailyChallangeIndex(int dailyChallangeIndex) {
-        this.dailyChallangeIndex = dailyChallangeIndex;
+    public void setDailyChallengeIndex(int dailyChallengeIndex) {
+        this.dailyChallengeIndex = dailyChallengeIndex;
     }
 
     public String getdCSkipped() {
@@ -274,12 +276,12 @@ public class AccountManager implements Serializable {
         this.dCSkipped = dCSkipped;
     }
 
-    public int getWeeklyChallengIndex() {
-        return weeklyChallengIndex;
+    public int getWeeklyChallengeIndex() {
+        return weeklyChallengeIndex;
     }
 
-    public void setWeeklyChallengIndex(int weeklyChallengIndex) {
-        this.weeklyChallengIndex = weeklyChallengIndex;
+    public void setWeeklyChallengeIndex(int weeklyChallengeIndex) {
+        this.weeklyChallengeIndex = weeklyChallengeIndex;
     }
 
     public int getwCSkipped() {
@@ -370,9 +372,9 @@ public class AccountManager implements Serializable {
                 private int goalType;
                 private int goalWeight;
                 private String activityGoal;
-                private int dailyChallangeIndex;
+                private int dailyChallengeIndex;
                 private int dCSkipped;
-                private int weeklyChallengIndex;
+                private int weeklyChallengeIndex;
                 private int wCSkipped;
                 private int security_question;
                 private int targetCalories;
@@ -395,13 +397,14 @@ public class AccountManager implements Serializable {
                 user.setGoalType(goalType);
                 user.setGoalWeight(goalWeight);
                 user.setActivityGoal(activityGoal);
-                user.setDailyChallengeIndex(dailyChallangeIndex);
+                user.setDailyChallengeIndex(dailyChallengeIndex);
                 user.setDCSkipped(dCSkipped);
-                user.setWeeklyChallengeIndex(weeklyChallengIndex);
+                user.setWeeklyChallengeIndex(weeklyChallengeIndex);
                 user.setWCSkipped(wCSkipped);
                 user.setSecurityQuestion(security_question);
                 user.setSecurityAnswer(security_answer);
                 user.setEmail(email);
+                
                 userFacade.create(user);                
             } catch (EJBException e) {
                 username = "";
