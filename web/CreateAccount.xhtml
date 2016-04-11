@@ -70,24 +70,27 @@ Copyright © 2016 Osman Balci. All rights reserved.
                 <h:inputText id="dailyChallengeIndex" value="#{accountManager.dailyChallengeIndex}"/>
                 
                 <p>DC Skipped:</p>
-                <h:inputText id="dcSkipped" value="#{accountManager.dcSkipped}"/>
+                <h:inputText id="dcSkipped" value="#{accountManager.dCSkipped}"/>
                 
                 <p>Weekly Challenge Index:</p>
                 <h:inputText id="weeklyChallengeIndex" value="#{accountManager.weeklyChallengeIndex}"/>
                 
                 <p>WC Skipped:</p>
-                <h:inputText id="wcSkipped" value="#{accountManager.wcSkipped}"/>
+                <h:inputText id="wcSkipped" value="#{accountManager.wCSkipped}"/>
                 
                 <p>Security Question:</p>
-                <h:inputText id="securityQuestion" value="#{accountManager.securityQuestion}"/>
+                <h:inputText id="securityQuestion" value="#{accountManager.security_question}"/>
                 
                 <p>Security Answer:</p>
-                <h:inputText id="securityAnswer" value="#{accountManager.securityAnswer}"/>
+                <h:inputText id="securityAnswer" value="#{accountManager.security_answer}"/>
                 
                 <p>Target Calories:</p>
                 <h:inputText id="targetCalories" value="#{accountManager.targetCalories}"/>
                 
+                <br/><br/>
                 
+                <h:commandButton class="btn btn-lg btn-success btn-block" id="submit" 
+                           action="#{accountManager.createAccount()}" value="Submit" />   
             
             </h:form>
 
