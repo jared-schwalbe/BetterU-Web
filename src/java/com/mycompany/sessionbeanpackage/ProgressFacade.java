@@ -28,19 +28,19 @@ public class ProgressFacade extends AbstractFacade<Progress> {
         super(Progress.class);
     }
     
-    /*public Progress findByUsername() {
+    public Progress findProgressByPid(int id) {
+        String query = "SELECT p FROM Progress p WHERE p.id = :pid";
         
-        
-        if (em.createQuery("SELECT p FROM Progress p WHERE p.username = 1")
-                //.setParameter("uname", username)
+        if (em.createQuery(query)
+                .setParameter("pid", id)
                 .getResultList().isEmpty()) {
             return null;
         }
         else {
-            return (User) (em.createQuery("SELECT u FROM User u WHERE u.username = :uname")
-                .setParameter("uname", username)
+            return (Progress) (em.createQuery(query)
+                .setParameter("pid", id)
                 .getSingleResult());        
         }
-    }*/
+    }
     
 }

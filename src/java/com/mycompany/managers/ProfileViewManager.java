@@ -4,7 +4,9 @@
  */
 package com.mycompany.managers;
 
+import com.mycompany.entitypackage.Progress;
 import com.mycompany.entitypackage.User;
+import com.mycompany.sessionbeanpackage.ProgressFacade;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -29,6 +31,10 @@ public class ProfileViewManager implements Serializable {
      */  
     @EJB
     private com.mycompany.sessionbeanpackage.UserFacade userFacade;
+    
+    @EJB
+    private ProgressFacade progressFacade;
+
 
     public ProfileViewManager() {
         
@@ -55,5 +61,11 @@ public class ProfileViewManager implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+    
+    public Progress getLoggedInUsersProgress() {
+        return progressFacade.findProgressByPid(1);
+    }
+
+
 
 }
