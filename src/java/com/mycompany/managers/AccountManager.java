@@ -33,6 +33,7 @@ public class AccountManager implements Serializable {
     private String lastName;
     private String username;
     private String password;
+    private String confirmPassword;
     private int age;
     private char gender;
     private int height;
@@ -156,6 +157,20 @@ public class AccountManager implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    /**
+     * @return the password
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setConfirmPassword(String password) {
+        this.confirmPassword = password;
     }
 
     /**

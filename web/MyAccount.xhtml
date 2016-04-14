@@ -2,14 +2,64 @@
 <!--
 Created by Jared Schwalbe on 2016.04.05 
 Copyright © 2016 Osman Balci. All rights reserved.
+
+My Account
+ - Show name, email, level, picture
+ - Edit/show Basic information
+   - First name
+   - Last name
+   - age
+   - height
+   - weight
+   - gender
+ - Advanced settings
+   - email
+   - goal weight
+   - password
+   - confirm password
+   - current activity level
+   - goal activity level
+
+
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head>
         <title>My Account</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        My Account page.
+        <h1>My Account</h1>        
+        <p>Name:</p>
+        <p><h:outputText value="#{profileViewManager.loggedInUser.firstName}"/></p>
+        <h1>Basic Information - Show/Edit</h1>
+        <p>First Name:</p>
+        <h:inputText id="firstName" value="#{accountManager.firstName}"/>
+        <p>Last Name:</p>
+        <h:inputText id="lastName" value="#{accountManager.lastName}"/>
+        <p>Age:</p>
+        <h:inputText id="age" value="#{accountManager.age}"/>
+        <p>Height:</p>
+        <h:inputText id="height" value="#{accountManager.height}"/>
+        <p>Weight:</p>
+        <h:inputText id="weight" value="#{accountManager.weight}"/>
+        <p>Gender:</p>
+        <h:inputText id="gender" value="#{accountManager.gender}"/>
+        <h2>Advanced Settings</h2>
+        <p>Email:</p>
+        <h:inputText id="email" value="#{accountManager.email}"/>
+        <p>Goal Weight:</p>
+        <h:inputText id="goalWeight" value="#{accountManager.goalWeight}"/>
+        <p>Password:</p>
+        <h:inputText id="password" value="#{accountManager.password}"/>
+        <p>Confirm Password:</p>
+        <h:inputText id="confirmPassword" value="#{accountManager.confirmPassword}"/>
+        <p>Current Activity Level:</p>
+        <h:inputText id="currentActivityLevel" value="#{accountManager.activityLevel}"/>
+        <p>Goal Activity Level</p>
+        <h:inputText id="goalActivityLevel" value="#{accountManager.activityGoal}"/>-->
+        <h:commandButton class="btn btn-lg btn-success btn-block" id="submit" 
+                           action="#{accountManager.updateAccount()}" value="Submit" /> 
     </body>
 </html>
