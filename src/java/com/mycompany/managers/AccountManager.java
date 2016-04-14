@@ -6,6 +6,7 @@ package com.mycompany.managers;
 
 import com.mycompany.entitypackage.User;
 import com.mycompany.sessionbeanpackage.PhotoFacade;
+import com.mycompany.sessionbeanpackage.ProgressFacade;
 import com.mycompany.sessionbeanpackage.UserFacade;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -67,6 +68,9 @@ public class AccountManager implements Serializable {
      */
     @EJB
     private UserFacade userFacade;
+    
+    @EJB
+    private ProgressFacade progressFacade;
 
     /**
      * The instance variable 'photoFacade' is annotated with the @EJB annotation.
