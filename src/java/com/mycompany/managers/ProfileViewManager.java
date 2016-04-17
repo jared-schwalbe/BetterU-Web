@@ -7,6 +7,7 @@ package com.mycompany.managers;
 import com.mycompany.entitypackage.Progress;
 import com.mycompany.entitypackage.User;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -65,9 +66,9 @@ public class ProfileViewManager implements Serializable {
         this.user = user;
     }
     
-    public Progress getLoggedInUsersProgress() {
+    public List<Progress> getLoggedInUsersProgress() {
         // TODO return whole list
-        return progressFacade.findAllProgressEntriesByUid(getLoggedInUser().getId()).get(0);
+        return progressFacade.findAllProgressEntriesByUid(getLoggedInUser().getId());
     }
 
 }

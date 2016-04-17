@@ -5,6 +5,8 @@
 package com.mycompany.entitypackage;
 
 import java.io.Serializable;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.joda.time.DateTime;
 import javax.persistence.Basic;
@@ -60,6 +62,13 @@ public class Progress implements Serializable {
     private Integer steps;
     @Column(name = "UserId")
     private Integer uid;
+
+    public String getDayString() {
+        Date date = new Date((long) this.getDay() * 1000);
+        Format format = new SimpleDateFormat("MM/dd/yyyy");
+        return format.format(date);
+    }
+
     
     public Progress() {
     }
