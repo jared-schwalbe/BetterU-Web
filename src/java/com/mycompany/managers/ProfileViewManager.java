@@ -4,6 +4,7 @@
  */
 package com.mycompany.managers;
 
+import com.mycompany.entitypackage.Progress;
 import com.mycompany.entitypackage.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -29,6 +30,14 @@ public class ProfileViewManager implements Serializable {
      */  
     @EJB
     private com.mycompany.sessionbeanpackage.UserFacade userFacade;
+    
+    /**
+     * The instance variable 'userFacade' is annotated with the @EJB annotation.
+     * This means that the GlassFish application server, at runtime, will inject in
+     * this instance variable a reference to the @Stateless session bean UserFacade.
+     */  
+    @EJB
+    private com.mycompany.sessionbeanpackage.ProgressFacade progressFacade;
 
     public ProfileViewManager() {
         
@@ -54,6 +63,11 @@ public class ProfileViewManager implements Serializable {
      */
     public void setUser(User user) {
         this.user = user;
+    }
+    
+    public Progress getLoggedInUsersProgress() {
+        // TODO return whole list
+        return progressFacade.findAllProgressEntriesByUid(getLoggedInUser().getId()).get(0);
     }
 
 }
