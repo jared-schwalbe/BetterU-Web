@@ -31,7 +31,6 @@ public class ProfileViewManager implements Serializable {
      */  
     @EJB
     private com.mycompany.sessionbeanpackage.UserFacade userFacade;
-    
     @EJB
     private ProgressFacade progressFacade;
 
@@ -63,9 +62,10 @@ public class ProfileViewManager implements Serializable {
     }
     
     public Progress getLoggedInUsersProgress() {
-        return progressFacade.findProgressByPid(1);
+        // TODO return whole list
+        return progressFacade.findAllProgressEntriesByUid(getLoggedInUser().getId()).get(0);
     }
-
-
-
+    
+    
+    
 }

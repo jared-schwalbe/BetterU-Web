@@ -5,6 +5,7 @@
 package com.mycompany.sessionbeanpackage;
 
 import com.mycompany.entitypackage.Progress;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,18 +29,18 @@ public class ProgressFacade extends AbstractFacade<Progress> {
         super(Progress.class);
     }
     
-    public Progress findProgressByPid(int id) {
-        String query = "SELECT p FROM Progress p WHERE p.id = :pid";
+    public List<Progress> findAllProgressEntriesByUid(int uid) {
+        String query = "SELECT p FROM Progress p WHERE p.uid = :uid";
         
         if (em.createQuery(query)
-                .setParameter("pid", id)
+                .setParameter("uid", uid)
                 .getResultList().isEmpty()) {
             return null;
         }
         else {
-            return (Progress) (em.createQuery(query)
-                .setParameter("pid", id)
-                .getSingleResult());        
+            return (List<Progress>) (em.createQuery(query)
+                .setParameter("uid", uid)
+                .getResultList());        
         }
     }
     
