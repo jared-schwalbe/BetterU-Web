@@ -30,36 +30,46 @@ My Account
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <h1>My Account</h1>        
-        <p>Name:</p>
-        <p><h:outputText value="#{profileViewManager.loggedInUser.firstName}"/></p>
-        <h1>Basic Information - Show/Edit</h1>
-        <p>First Name:</p>
-        <h:inputText id="firstName" value="#{accountManager.firstName}"/>
-        <p>Last Name:</p>
-        <h:inputText id="lastName" value="#{accountManager.lastName}"/>
-        <p>Age:</p>
-        <h:inputText id="age" value="#{accountManager.age}"/>
-        <p>Height:</p>
-        <h:inputText id="height" value="#{accountManager.height}"/>
-        <p>Weight:</p>
-        <h:inputText id="weight" value="#{accountManager.weight}"/>
-        <p>Gender:</p>
-        <h:inputText id="gender" value="#{accountManager.gender}"/>
-        <h2>Advanced Settings</h2>
-        <p>Email:</p>
-        <h:inputText id="email" value="#{accountManager.email}"/>
-        <p>Goal Weight:</p>
-        <h:inputText id="goalWeight" value="#{accountManager.goalWeight}"/>
-        <p>Password:</p>
-        <h:inputText id="password" value="#{accountManager.password}"/>
-        <p>Confirm Password:</p>
-        <h:inputText id="confirmPassword" value="#{accountManager.confirmPassword}"/>
-        <p>Current Activity Level:</p>
-        <h:inputText id="currentActivityLevel" value="#{accountManager.activityLevel}"/>
-        <p>Goal Activity Level</p>
-        <h:inputText id="goalActivityLevel" value="#{accountManager.activityGoal}"/>-->
-        <h:commandButton class="btn btn-lg btn-success btn-block" id="submit" 
-                           action="#{accountManager.updateAccount()}" value="Submit" /> 
+        <h:form id="my-account-form">
+            <h1>My Account</h1>        
+            <p>Name:</p>
+            <h:outputText value="#{accountManager.firstName}"/> 
+            <h:outputText value="#{accountManager.lastName}"/>
+            <p>Email:</p>
+            <p><h:outputText value="#{accountManager.email}"/></p>
+            <p>Level (Points):</p>
+            <p><h:outputText value="#{accountManager.points}"/></p>
+            <p>Picture?</p>
+            
+            <h1>Basic Information - Show/Edit</h1>
+            <p>First Name:</p>
+            <h:inputText id="firstName" value="#{accountManager.firstName}"/>
+            <p>Last Name:</p>
+            <h:inputText id="lastName" value="#{accountManager.lastName}"/>
+            <p>Age:</p>
+            <h:inputText id="age" value="#{accountManager.age}"/>
+            <p>Height:</p>
+            <h:inputText id="height" value="#{accountManager.height}"/>
+            <p>Weight:</p>
+            <h:inputText id="weight" value="#{accountManager.weight}"/>
+            <p>Gender:</p>
+            <h:inputText id="gender" value="#{accountManager.gender}"/>
+            <h2>Advanced Settings</h2>
+            <p>Email:</p>
+            <h:inputText id="email" value="#{accountManager.email}"/>
+            <p>Goal Weight:</p>
+            <h:inputText id="goalWeight" value="#{accountManager.goalWeight}"/>
+            <p>Password:</p>
+            <h:inputText id="password" value="#{accountManager.password}"/>
+            <p>Confirm Password:</p>
+            <h:inputText id="confirmPassword" value="#{accountManager.confirmPassword}"/>
+            <p>Current Activity Level:</p>
+            <h:inputText id="currentActivityLevel" value="#{accountManager.activityLevel}"/>
+            <p>Goal Activity Level</p>
+            <h:inputText id="goalActivityLevel" value="#{accountManager.activityGoal}"/>
+            <br/>
+            <h:commandButton class="btn btn-lg btn-success btn-block" id="submit" 
+                               action="#{accountManager.updateAccount()}" value="Submit" /> 
+        </h:form>
     </body>
 </html>
