@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Created by Jared Schwalbe on 2016.04.05 
-Copyright © 2016 Osman Balci. All rights reserved.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>My Account</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        My Account page.
-        
-        <a href="MyProgress.xhtml">View Progress</a>
-    </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="template/siteTemplate.xhtml">
+            <!-- Page title -->
+            <title><ui:define name="title">BetterU</ui:define></title>
+            <!-- Additional CSS styles needed -->
+            <ui:define name="css">
+                <link rel="stylesheet" type="text/css" href="resources/css/myAccount.css"/>
+            </ui:define>
+            <!-- Additional JS files needed -->
+            
+            <!-- Page content -->
+            <ui:define name="editableContent">
+                My Account page.
+                <a href="MyProgress.xhtml">View Progress</a>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
