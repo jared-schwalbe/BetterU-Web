@@ -33,12 +33,12 @@ My Account
         <h:form id="my-account-form">
             <h1>My Account</h1>        
             <p>Name:</p>
-            <h:outputText value="#{accountManager.firstName}"/> 
-            <h:outputText value="#{accountManager.lastName}"/>
+            <h:outputText value="#{profileViewManager.loggedInUser.firstName}"/> 
+            <h:outputText value="#{profileViewManager.loggedInUser.lastName}"/>
             <p>Email:</p>
-            <p><h:outputText value="#{accountManager.email}"/></p>
+            <p><h:outputText value="#{profileViewManager.loggedInUser.email}"/></p>
             <p>Level (Points):</p>
-            <p><h:outputText value="#{accountManager.points}"/></p>
+            <p><h:outputText value="#{profileViewManager.loggedInUser.points}"/></p>
             <p>Picture?</p>
             
             <h1>Basic Information - Show/Edit</h1>
