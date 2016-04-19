@@ -27,5 +27,5 @@ public class UsersProgressFacade extends AbstractFacade<UsersProgress> {
     public UsersProgressFacade() {
         super(UsersProgress.class);
     }
-    
+
 }
