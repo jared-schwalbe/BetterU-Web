@@ -1,11 +1,14 @@
 /*
- * Created by Jared Schwalbe on 2016.04.05  * 
- * Copyright © 2016 Osman Balci. All rights reserved. * 
+ * Created by Ojas Mhetar on 2016.04.03  * 
+ * Copyright © 2016 Ojas Mhetar. All rights reserved. * 
  */
 package com.mycompany.entitypackage;
 
 import java.io.Serializable;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.joda.time.DateTime;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Jared
+ * @author ojmhetar
  */
 @Entity
 @Table(name = "Progress")
@@ -33,7 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Progress.findByCaloriesOut", query = "SELECT p FROM Progress p WHERE p.caloriesOut = :caloriesOut"),
     @NamedQuery(name = "Progress.findByWeight", query = "SELECT p FROM Progress p WHERE p.weight = :weight"),
     @NamedQuery(name = "Progress.findByMiles", query = "SELECT p FROM Progress p WHERE p.miles = :miles"),
-    @NamedQuery(name = "Progress.findBySteps", query = "SELECT p FROM Progress p WHERE p.steps = :steps")})
+    @NamedQuery(name = "Progress.findBySteps", query = "SELECT p FROM Progress p WHERE p.steps = :steps"),
+    @NamedQuery(name = "Progress.findByUid", query = "SELECT p FROM Progress p WHERE p.uid = :uid")})
 public class Progress implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +49,7 @@ public class Progress implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Day")
-    @Temporal(TemporalType.DATE)
-    private Date day;
+    private Integer day;
     @Column(name = "CaloriesIn")
     private Integer caloriesIn;
     @Column(name = "CaloriesOut")
@@ -57,7 +60,16 @@ public class Progress implements Serializable {
     private Integer miles;
     @Column(name = "Steps")
     private Integer steps;
+    @Column(name = "UserId")
+    private Integer uid;
 
+    public String getDayString() {
+        Date date = new Date((long) this.getDay() * 1000);
+        Format format = new SimpleDateFormat("MM/dd/yyyy");
+        return format.format(date);
+    }
+
+    
     public Progress() {
     }
 
@@ -65,7 +77,7 @@ public class Progress implements Serializable {
         this.id = id;
     }
 
-    public Progress(Integer id, Date day) {
+    public Progress(Integer id, Integer day) {
         this.id = id;
         this.day = day;
     }
@@ -78,11 +90,11 @@ public class Progress implements Serializable {
         this.id = id;
     }
 
-    public Date getDay() {
+    public Integer getDay() {
         return day;
     }
 
-    public void setDay(Date day) {
+    public void setDay(Integer day) {
         this.day = day;
     }
 
@@ -148,7 +160,7 @@ public class Progress implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.entitypackage.Progress[ id=" + id + " ]";
+        return "com.betteru.sourcepackage.Progress[ id=" + id + " ]";
     }
     
 }
