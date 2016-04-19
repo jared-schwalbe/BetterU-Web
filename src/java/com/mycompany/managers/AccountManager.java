@@ -4,8 +4,10 @@
  */
 package com.mycompany.managers;
 
+import com.mycompany.entitypackage.Progress;
 import com.mycompany.entitypackage.User;
 import com.mycompany.sessionbeanpackage.PhotoFacade;
+import com.mycompany.sessionbeanpackage.ProgressFacade;
 import com.mycompany.sessionbeanpackage.UserFacade;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -67,7 +69,7 @@ public class AccountManager implements Serializable {
      */
     @EJB
     private UserFacade userFacade;
-
+    
     /**
      * The instance variable 'photoFacade' is annotated with the @EJB annotation.
      * This means that the GlassFish application server, at runtime, will inject in
@@ -497,7 +499,5 @@ public class AccountManager implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index.xhtml?faces-redirect=true";
     }
-   
-
-
+    
 }
