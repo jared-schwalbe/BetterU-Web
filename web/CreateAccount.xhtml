@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created by Jared Schwalbe on 2016.04.05 
+Copyright © 2016 Osman Balci. All rights reserved.
+-->
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Create Account</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>
+            <h:form>
+                <h2>New Account</h2>
+                <br/>
+
+                <p>First Name:</p>
+                <h:inputText id="firstName" value="#{accountManager.firstName}"/>
+
+                <p>Last Name:</p>
+                <h:inputText id="lastName" value="#{accountManager.lastName}"/>
+
+                <p>Username:</p>
+                <h:inputText id="username" value="#{accountManager.username}"/>
+                
+                <p>Password:</p>
+                <h:inputText id="password" value="#{accountManager.password}"/>
+                
+                <p>Age:</p>
+                <h:inputText id="age" value="#{accountManager.age}"/>
+                
+                <p>Gender:</p>
+                <h:inputText id="gender" value="#{accountManager.gender}"/>
+                
+                <p>Height:</p>
+                <h:inputText id="height" value="#{accountManager.height}"/>
+                
+                <p>Weight:</p>
+                <h:inputText id="weight" value="#{accountManager.weight}"/>
+                
+                <p>Email:</p>
+                <h:inputText id="email" value="#{accountManager.email}"/>
+                
+                <p>Activity Level:</p>
+                <h:inputText id="activityLevel" value="#{accountManager.activityLevel}"/>
+                
+                <p>Goal Type:</p>
+                <h:inputText id="goalType" value="#{accountManager.goalType}"/>
+                
+                <p>Goal Weight:</p>
+                <h:inputText id="goalWeight" value="#{accountManager.goalWeight}"/>
+                
+                <p>Activity Goal:</p>
+                <h:inputText id="activityGoal" value="#{accountManager.activityGoal}"/>
+                
+                <p>Security Question:</p>
+                <h:inputText id="securityQuestion" value="#{accountManager.security_question}"/>
+                
+                <p>Security Answer:</p>
+                <h:inputText id="securityAnswer" value="#{accountManager.security_answer}"/>
+                
+                <p>Target Calories:</p>
+                <h:inputText id="targetCalories" value="#{accountManager.targetCalories}"/>
+                
+                <br/><br/>
+                
+                <h:commandButton class="btn btn-lg btn-success btn-block" id="submit" 
+                           action="#{accountManager.createAccount()}" value="Submit" />   
+            
+            </h:form>
+
+        </div>
+        
+        
+    </body>
+</html>
