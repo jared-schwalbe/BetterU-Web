@@ -419,12 +419,12 @@ public class AccountManager implements Serializable {
             int user_id = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user_id");
                 User editUser = userFacade.getUser(user_id);
             try {
-                editUser.setFirstName(this.selected.getFirstName());
-                editUser.setLastName(this.selected.getLastName());
-                editUser.setHeight(this.selected.getHeight());
-                editUser.setWeight(this.selected.getWeight());              
-                editUser.setEmail(this.selected.getEmail());
-                editUser.setPassword(this.selected.getPassword());
+                editUser.setFirstName(this.getSelected().getFirstName());
+                editUser.setLastName(this.getSelected().getLastName());
+                editUser.setHeight(this.getSelected().getHeight());
+                editUser.setWeight(this.getSelected().getWeight());              
+                editUser.setEmail(this.getSelected().getEmail());
+                editUser.setPassword(this.getSelected().getPassword());
                 userFacade.edit(editUser);
             } catch (EJBException e) {
                 username = "";
