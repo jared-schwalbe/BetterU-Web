@@ -400,23 +400,28 @@ public class AccountManager implements Serializable {
     }
 
     public String updateAccount() {
+       
         if (statusMessage.isEmpty()) {
+            
             int user_id = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user_id");
                 User editUser = userFacade.getUser(user_id);
             try {
+                
                 editUser.setFirstName(this.selected.getFirstName());
                 editUser.setLastName(this.selected.getLastName());
                 editUser.setHeight(this.selected.getHeight());
                 editUser.setWeight(this.selected.getWeight());              
                 editUser.setEmail(this.selected.getEmail());
                 editUser.setPassword(this.selected.getPassword());
+                
                 userFacade.edit(editUser);
             } catch (EJBException e) {
+             
                 username = "";
                 statusMessage = "Something went wrong while editing your profile!";
                 return "";
             }
-            return "Profile";
+            return "SignIn";
         }
         return "";
     }
