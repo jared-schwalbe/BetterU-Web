@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Created by Jared Schwalbe on 2016.04.05 
-Copyright © 2016 Osman Balci. All rights reserved.
--->
-<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -19,7 +16,7 @@ Copyright © 2016 Osman Balci. All rights reserved.
             <title><ui:define name="title">BetterU</ui:define></title>
             <!-- Additional CSS styles needed -->
             <ui:define name="css">
-                <link rel="stylesheet" type="text/css" href="resources/css/index.css"/>
+                <link rel="stylesheet" type="text/css" href="resources/css/signIn.css"/>
             </ui:define>
             <!-- Additional JS files needed -->
             
@@ -57,9 +54,17 @@ Copyright © 2016 Osman Balci. All rights reserved.
                         <p>Email:</p>
                         <h:inputText id="email" value="#{accountManager.email}"/>
 
-                        <p>Activity Level:</p>
-                        <h:inputText id="activityLevel" value="#{accountManager.activityLevel}"/>
-
+                        <br/>
+                   
+                        <p:outputLabel for="activity_lvl" value="Activity Level" />
+                        <br/>
+                        <h:selectOneMenu id="activity_lvl" value="#{accountManager.activityLevel}" required="true">
+            
+                            <f:selectItems value="#{accountManager.activity_levels}"/>
+                        </h:selectOneMenu>
+                        <p:message for="security_ques" display="icon" />  
+                    
+                    
                         <p>Goal Type:</p>
                         <h:inputText id="goalType" value="#{accountManager.goalType}"/>
 
@@ -69,8 +74,13 @@ Copyright © 2016 Osman Balci. All rights reserved.
                         <p>Activity Goal:</p>
                         <h:inputText id="activityGoal" value="#{accountManager.activityGoal}"/>
 
-                        <p>Security Question:</p>
-                        <h:inputText id="securityQuestion" value="#{accountManager.security_question}"/>
+                        <br/> 
+                        <p:outputLabel for="security_ques" value="Security Question" />
+                        <br/>
+                        <h:selectOneMenu id="security_ques" value="#{accountManager.security_question}" required="true">
+                            <f:selectItems value="#{accountManager.security_questions}"/>
+                        </h:selectOneMenu>
+                        <p:message for="security_ques" display="icon" />  
 
                         <p>Security Answer:</p>
                         <h:inputText id="securityAnswer" value="#{accountManager.security_answer}"/>
@@ -88,7 +98,6 @@ Copyright © 2016 Osman Balci. All rights reserved.
                 </div>
             </ui:define>
         </ui:composition>
-        
         
     </body>
 </html>

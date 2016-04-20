@@ -59,6 +59,7 @@ public class AccountManager implements Serializable {
         
     private final String[] listOfStates = Constants.STATES;
     private Map<String, Object> security_questions;
+    private Map<String, Object> activity_levels; 
     
     private User selected;
     
@@ -334,6 +335,17 @@ public class AccountManager implements Serializable {
             }
         }
         return security_questions;
+    }
+    
+    public Map<String, Object> getActivity_levels() { 
+        if (activity_levels == null) {
+            activity_levels = new LinkedHashMap<>();
+            for (int i = 0; i < Constants.ACTIVITY_LEVEL.length; i++) {
+                activity_levels.put(Constants.ACTIVITY_LEVEL[i], i);
+            }
+        }
+        return activity_levels;
+        
     }
     
     public User getSelected() {
