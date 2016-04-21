@@ -8,15 +8,16 @@ Copyright © 2016 Osman Balci. All rights reserved.
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:p="http://primefaces.org/ui">
-    <head>
+    <h:head>
         <title>Create Account</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+    </h:head>
     <body>
         <div>
             <h:form>
                 <h2>New Account</h2>
                 <br/>
+                <f:event listener="#{accountManager.validateInformation}" type="postValidate"/>
 
                 <p>First Name:</p>
                 <h:inputText id="firstName" value="#{accountManager.firstName}"/>
@@ -27,8 +28,18 @@ Copyright © 2016 Osman Balci. All rights reserved.
                 <p>Username:</p>
                 <h:inputText id="username" value="#{accountManager.username}"/>
                 
-                <p>Password:</p>
-                <h:inputText id="password" value="#{accountManager.password}"/>
+                <p>Password: </p>
+                    <h:inputSecret id="password" value="#{accountManager.password}" 
+                                required="true" label="Password">
+                        <f:validator validatorId="passwordValidator" /> 
+                    </h:inputSecret>
+                    <p:message for="password" display="icon" />
+                
+                <p>Confirm Password: </p>
+                    <h:inputSecret id="confirmPassword" 
+                                required="true" label="Confirm Password">
+                    </h:inputSecret>
+                    <p:message for="confirmPassword" display="icon"/>
                 
                 <p>Age:</p>
                 <h:inputText id="age" value="#{accountManager.age}"/>
@@ -43,7 +54,10 @@ Copyright © 2016 Osman Balci. All rights reserved.
                 <h:inputText id="weight" value="#{accountManager.weight}"/>
                 
                 <p>Email:</p>
-                <h:inputText id="email" value="#{accountManager.email}"/>
+                <h:inputText id="email" value="#{accountManager.email}">
+                    <f:validateLength minimum="2" />
+                    <f:validator validatorId="emailValidator" />
+                </h:inputText>
                 
                 <p>Activity Level:</p>
                 <h:inputText id="activityLevel" value="#{accountManager.activityLevel}"/>
