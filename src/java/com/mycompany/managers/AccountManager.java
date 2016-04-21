@@ -59,6 +59,7 @@ public class AccountManager implements Serializable {
         
     private final String[] listOfStates = Constants.STATES;
     private Map<String, Object> security_questions;
+    private Map<String, Object> activity_levels; 
     
     private User selected;
     
@@ -336,6 +337,17 @@ public class AccountManager implements Serializable {
         return security_questions;
     }
     
+    public Map<String, Object> getActivity_levels() { 
+        if (activity_levels == null) {
+            activity_levels = new LinkedHashMap<>();
+            for (int i = 0; i < Constants.ACTIVITY_LEVEL.length; i++) {
+                activity_levels.put(Constants.ACTIVITY_LEVEL[i], i);
+            }
+        }
+        return activity_levels;
+        
+    }
+    
     public User getSelected() {
         if (selected == null) {
             selected = userFacade.find(FacesContext.getCurrentInstance().
@@ -400,23 +412,28 @@ public class AccountManager implements Serializable {
     }
 
     public String updateAccount() {
+       
         if (statusMessage.isEmpty()) {
+            
             int user_id = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user_id");
                 User editUser = userFacade.getUser(user_id);
             try {
+                
                 editUser.setFirstName(this.selected.getFirstName());
                 editUser.setLastName(this.selected.getLastName());
                 editUser.setHeight(this.selected.getHeight());
                 editUser.setWeight(this.selected.getWeight());              
                 editUser.setEmail(this.selected.getEmail());
                 editUser.setPassword(this.selected.getPassword());
+                
                 userFacade.edit(editUser);
             } catch (EJBException e) {
+             
                 username = "";
                 statusMessage = "Something went wrong while editing your profile!";
                 return "";
             }
-            return "Profile";
+            return "SignIn";
         }
         return "";
     }
